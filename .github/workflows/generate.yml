@@ -3,6 +3,7 @@ name: VN IP CIDR Generate
 on:
   schedule:
     - cron: "11 10 * * */7"
+  workflow_dispatch:
 
 jobs:
   generate_v4:
@@ -32,6 +33,6 @@ jobs:
           files: out/vn_ipv4_cidr.txt
           tag_name: ${{ env.RELEASE_TAG_NAME }}
           name: ${{ env.RELEASE_NAME }}
-          draft: ${{ github.event_name == 'workflow_dispatch' }}
+          draft: ${{ github.event_name == 'workflow_dispatch' ||  }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
