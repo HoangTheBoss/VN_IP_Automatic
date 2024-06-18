@@ -22,7 +22,7 @@ jobs:
           python-version: "pypy3.10"
           cache: 'pip'
       - name: Install Python dependencies
-        run: pip install -r requirement.txt
+        run: pip install -r requirements.txt
       - name: Download raw IP ranges file
         run: wget https://suip.biz/?act=all-country-ip&country=VN&all-download -O tmp/VN-suip.biz.txt
       - name: Run generation script
