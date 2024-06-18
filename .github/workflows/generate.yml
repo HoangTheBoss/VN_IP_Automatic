@@ -24,9 +24,13 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
       - name: Download raw IP ranges file
-        run: wget 'https://suip.biz/?act=all-country-ip&country=VN&all-download' -O tmp/VN-suip.biz.txt
+        run: |
+          mkdir tmp
+          wget 'https://suip.biz/?act=all-country-ip&country=VN&all-download' -O tmp/VN-suip.biz.txt
       - name: Run generation script
-        run: python main.py
+        run: |
+          mkdir out
+          python main.py
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
